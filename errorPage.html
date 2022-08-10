@@ -3,7 +3,15 @@
 <title>title here</title>
 <script>
   function loadMore(){
-    alert();
+    let xhr = new XMLHttpRequest();
+    let url = 'https://raw.githubusercontent.com/orangesharing/prd/main/moreinfo.html'
+    xhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          document.getElementById('more').innerHTML = this.response;
+      }
+    }
+    xhr.open("GET", url, true);
+    xhr.send();
   }
 </script>
 </head>
